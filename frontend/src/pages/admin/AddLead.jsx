@@ -22,7 +22,6 @@ const createLead = async (leadData) => {
   }
 };
   const [activeTab, setActiveTab] = useState('basic');
-  const [errors, setErrors] = useState({});
 
   const formik = useFormik({
     initialValues: {
@@ -60,45 +59,9 @@ const createLead = async (leadData) => {
           isGrayedOut: true 
         }
       ]
-    },validate:(values)=>{
-      if (!values.firstName) {
-        setErrors((prevErrors) => ({ ...prevErrors, firstName: 'First name is required' }));
-      }
-      if (!values.lastName) {
-        setErrors((prevErrors) => ({ ...prevErrors, lastName: 'Last name is required' }));
-      }
-      if (!values.phone) {
-        setErrors((prevErrors) => ({ ...prevErrors, phone: 'Phone number is required' }));
-      }
-      if (!values.email) {
-        setErrors((prevErrors) => ({ ...prevErrors, email: 'Email is required' }));
-      }
-      if (!values.gender) {
-        setErrors((prevErrors) => ({ ...prevErrors, gender: 'Gender is required' }));
-      }
-      if (!values.dateOfBirth) {
-        setErrors((prevErrors) => ({ ...prevErrors, dateOfBirth: 'Date of birth is required' }));
-      }
-      if (!values.height) {
-        setErrors((prevErrors) => ({ ...prevErrors, height: 'Height is required' }));
-      }
-      if (!values.heightUnit) {
-        setErrors((prevErrors) => ({ ...prevErrors, heightUnit: 'Height unit is required' }));
-      }
-      if (!values.weight) {
-        setErrors((prevErrors) => ({ ...prevErrors, weight: 'Weight is required' }));
-      }
-      if (!values.weightUnit) {
-        setErrors((prevErrors) => ({ ...prevErrors, weightUnit: 'Weight unit is required' }));
-      }
-      return errors;
     },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {        
-        if(errors){
-          toast.error("Please fill all the required fields");
-          return;
-        }
         await createLead(values);
         resetForm();
       } catch (err) {
