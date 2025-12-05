@@ -55,7 +55,7 @@ const StatusSection = ({ data, onUpdate, onSubmit, onNavigatePrevious }) => {
                   onChange={(e) => onUpdate({ assignedTo: e.target.value })}
                   className="flex h-10 w-full appearance-none rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  <option value="Ram Mohan">Ram Mohan</option>
+                  <option value="Manish Agrawal">Manish Agrawal</option>
                   <option value="other">Other</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">

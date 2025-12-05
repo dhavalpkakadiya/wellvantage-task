@@ -7,20 +7,19 @@ import StatusSection from '../../layout/StatusSection';
 import { apiService } from '../../services/axios';
 
 const SettingsPage = () => {
-const createLead = async (leadData) => {
-
-  try {
-    if (leadData.dateOfBirth == '') {
-      leadData.dateOfBirth = null;
+  const createLead = async (leadData) => {
+    try {
+      if (leadData.dateOfBirth == '') {
+        leadData.dateOfBirth = null;
+      }
+      const response = await apiService.post('/lead/create', leadData);
+      toast.success(response.data.message || "Lead created successfully!");
+      return response.data;
+    } catch (error) {
+      console.error("Failed to create lead, please try again.");
+      throw error;
     }
-    const response = await apiService.post('/lead/create', leadData);
-    toast.success(response.data.message || "Lead created successfully!");
-    return response.data;
-  } catch (error) {
-    console.error("Failed to create lead, please try again.");
-    throw error;
-  }
-};
+  };
   const [activeTab, setActiveTab] = useState('basic');
 
   const formik = useFormik({
@@ -45,32 +44,66 @@ const createLead = async (leadData) => {
         previousGymExperience: 'no'
       },
       inquiryDate: new Date().toISOString().split('T')[0],
-      assignedTo: 'ram_mohan',
+      assignedTo: 'Manish Agrawal',
       interestLevel: 'hot',
-      followUpStatus: 'New Inquiry', 
+      followUpStatus: 'New Inquiry',
       preferredPackage: 'package',
       preferredPtPackage: 'package',
       howTheyHeard: 'social_media',
       customNotes: [
         {
           id: Date.now(),
-          date: new Date().toISOString().split('T')[0], 
+          date: new Date().toISOString().split('T')[0],
           text: 'Lead created.',
-          isGrayedOut: true 
+          isGrayedOut: true
         }
       ]
     },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
-      try {        
+      try {
+        if (!validateRequiredFields(values)) {
+          setSubmitting(false);
+          return;
+        }
         await createLead(values);
         resetForm();
       } catch (err) {
         console.error(err);
       } finally {
         setSubmitting(false);
+        setActiveTab('basic');
       }
     },
   });
+
+  const validateRequiredFields = (values) => {
+    const required = [
+      'firstName',
+      'lastName',
+      'phone',
+      'email',
+      'gender',
+      'dateOfBirth',
+      'height',
+      'weight',
+    ];
+
+    const missing = required.filter((key) => {
+      const val = values[key];
+      if (key === 'dateOfBirth') { 
+        return val === null || val === '';
+      }
+      return val === null || val === undefined || String(val).trim() === '';
+    });
+
+    if (missing.length > 0) {
+      missing.forEach((k) => console.error(`Field '${k}' is not filled`));
+      toast.error("Please fill all required fields.");
+      return false;
+    }
+         
+    return true;
+  };
 
   const handleBasicUpdate = (updates) => {
     formik.setValues({ ...formik.values, ...updates });

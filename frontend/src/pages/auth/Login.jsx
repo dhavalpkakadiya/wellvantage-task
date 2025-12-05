@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo02 from "../../assets/svg/logo02.svg"
-import logo from "../../assets/svg/logo.svg" 
+import logo from "../../assets/svg/logo.svg"
 import { GoogleLogin } from '@react-oauth/google';
 import { apiService } from "../../services/axios";
 import { setAccessToken } from "../../common";
-import ImageLoader from "../../component/common/ImageLoader";
+import Spinner from "../../component/common/loader";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -15,7 +15,7 @@ const Login = () => {
 
   const handleLogin = async (credentialResponse) => {
     try {
-      setLoading(true);
+      setLoading(true); 
       setError(null);
 
       const token = credentialResponse.credential;
@@ -78,9 +78,13 @@ const Login = () => {
             </div>
           )}
           {loading ? (
-            <div className="text-gray-600">Loading...</div>
+            <Spinner size={48} />
           ) : (
-            <GoogleLogin onSuccess={handleLogin} onError={handleLoginError} />
+            <GoogleLogin onSuccess={handleLogin} onError={handleLoginError}
+              theme="outline"
+              size="large"
+              width="300"
+            />
           )}
         </div>
       </div>
