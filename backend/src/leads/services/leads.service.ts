@@ -52,13 +52,9 @@ export class LeadsService {
     }
 
     if (search) {
-      const searchCondition =
-        'lead.firstName LIKE :search OR lead.lastName LIKE :search';
-      if (gymId) {
-        query.andWhere(searchCondition, { search: `%${search}%` });
-      } else {
-        query.where(searchCondition, { search: `%${search}%` });
-      }
+      const searchCondition = 'lead.firstName ILIKE :search';
+
+      query.where(searchCondition, { search: `${search}%` });
     }
 
     query.skip((page - 1) * limit).take(limit);

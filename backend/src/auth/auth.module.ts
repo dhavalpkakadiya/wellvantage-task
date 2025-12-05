@@ -16,7 +16,7 @@ import { GymsModule } from '../gyms/gyms.module';
     GymsModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET || 'default_jwt_secret',
-      signOptions: { expiresIn: '7d' },
+      signOptions: { expiresIn: '1h' },
     }),
   ],
   providers: [GoogleStrategy, JwtStrategy, AuthService],
