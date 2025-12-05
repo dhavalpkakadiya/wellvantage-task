@@ -95,7 +95,7 @@ const LeadTable = () => {
           placeholder="Search leads by name..."
           value={searchTerm}
           onChange={handleSearch}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-2 border bg-[#F6F6F8] border-[#DFDFDF] rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
         />
       </div>
 
@@ -167,7 +167,7 @@ const LeadTable = () => {
 
                   <td className="px-6 py-0.5 text-center whitespace-nowrap">
                     <span
-                      className="inline-block px-3 py-1 text-sm font-medium whitespace-nowrap"
+                      className="inline-block px-3 py-1 text-sm font-medium whitespace-nowrap text-[#F59E0B]"
                       style={{ backgroundColor: colorPicker(lead.followUpStatus) }}
                     >
                       {lead.followUpStatus || 'N/A'}
@@ -175,7 +175,7 @@ const LeadTable = () => {
                   </td>
                   <td className="px-6 py-0.5 text-center box">
                     <button className="hover:opacity-70 transition-opacity">
-                      <img src={actionIcon} alt="actions" className="w-15 h-15" />
+                      <img src={actionIcon} alt="actions" className="w-25 h-15" />
                     </button>
                   </td>
                 </tr>

@@ -52,11 +52,17 @@ const SettingsPage = () => {
       howTheyHeard: 'social_media',
       customNotes: [
         {
+          id: Date.now() + 1,
+          date: new Date().toISOString().split('T')[0],
+          text: '',
+          isGrayedOut: false
+        },
+        {
           id: Date.now(),
           date: new Date().toISOString().split('T')[0],
           text: 'Lead created.',
           isGrayedOut: true
-        }
+        },
       ]
     },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
@@ -101,7 +107,7 @@ const SettingsPage = () => {
       toast.error("Please fill all required fields.");
       return false;
     }
-         
+
     return true;
   };
 

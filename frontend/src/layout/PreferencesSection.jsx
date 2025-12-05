@@ -1,6 +1,7 @@
 
 
 const PreferencesSection = ({ data, onUpdate, onNavigateNext, onNavigatePrevious }) => {
+  
   return (
     <div className="p-4 md:p-8 space-y-6 md:space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div>
@@ -156,8 +157,8 @@ const PreferencesSection = ({ data, onUpdate, onNavigateNext, onNavigatePrevious
                 onChange={(e) => onUpdate({ previousGymExperience: e.target.value })}
                 className="flex h-12 w-full appearance-none rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50"
               >
-                <option value="yes">yes</option>
-                <option value="no">no</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>

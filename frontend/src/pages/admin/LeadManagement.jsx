@@ -14,7 +14,7 @@ const LeadManagement = () => {
 
     return (
         <div className="flex flex-col h-screen w-screen overflow-hidden xl:pl-64">
-            <div className="bg-white border-b border-[#F1F1F1] px-1 py-4 xl:px-8 flex items-center justify-between shrink-0">
+            <div className="bg-[#F9F9FA] border-b border-[#F1F1F1] px-1 py-4 xl:px-8 flex items-center justify-between shrink-0">
                 <h1 className="text-2xl pl-16 font-semibold text-gray-800 xl:pl-4">
                     Lead Management
                 </h1>

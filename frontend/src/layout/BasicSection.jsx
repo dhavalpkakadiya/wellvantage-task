@@ -1,18 +1,19 @@
 
 import { useState } from "react";
 import * as Yup from "yup";
+import { toast } from 'react-toastify';
 
 const validationSchema = Yup.object().shape({
-  firstName: Yup.string().required("First Name is required"),
-  lastName: Yup.string().required("Last Name is required"),
+  firstName: Yup.string().required("Please Enter First Name"),
+  lastName: Yup.string().required("Please Enter Last Name"),
   phone: Yup.string()
-    .matches(/^\d{10}$/, "Phone number must be 10 digits")
-    .required("Phone is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  gender: Yup.string().required("Gender is required"),
-  dateOfBirth: Yup.string().required("Date of Birth is required"),
-  height: Yup.string().required("Height is required"),
-  weight: Yup.string().required("Weight is required"),
+    .matches(/^\d{10}$/, "Please Enter 10 Digits Phone Number")
+    .required("Please Enter phone number"),
+  email: Yup.string().email("Please Enter valid email").required("Please Enter Email"),
+  gender: Yup.string().required("Please Enter gender"),
+  dateOfBirth: Yup.string().required("Please Enter Date of Birth"),
+  height: Yup.string().required("Please Enter Height"),
+  weight: Yup.string().required("Please enter Weight"),
 });
 
 const BasicSection = ({ data, onUpdate, onNavigateNext }) => {
@@ -47,9 +48,17 @@ const BasicSection = ({ data, onUpdate, onNavigateNext }) => {
             <input
               id="firstName"
               value={data.firstName}
-              onChange={(e) => onUpdate({ firstName: e.target.value })}
+              onChange={(e) => {
+                const v = e.target.value;
+                const max = 50;
+                if (v.length > max) {
+                  toast.error(`First name cannot exceed ${max} characters`);
+                }
+                onUpdate({ firstName: v });
+              }}
               placeholder=""
               className={`flex h-12 w-full rounded-md border ${errors.firstName ? 'border-red-500' : 'border-gray-200'} bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50`}
+              maxLength={50}
             />
             {errors.firstName && <p className="text-sm text-red-500">{errors.firstName}</p>}
           </div>
@@ -61,9 +70,17 @@ const BasicSection = ({ data, onUpdate, onNavigateNext }) => {
             <input
               id="lastName"
               value={data.lastName}
-              onChange={(e) => onUpdate({ lastName: e.target.value })}
+              onChange={(e) => {
+                const v = e.target.value;
+                const max = 50;
+                if (v.length > max) {
+                  toast.error(`Last name cannot exceed ${max} characters`);
+                }
+                onUpdate({ lastName: v });
+              }}
               placeholder=""
               className={`flex h-12 w-full rounded-md border ${errors.lastName ? 'border-red-500' : 'border-gray-200'} bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50`}
+              maxLength={50}
             />
             {errors.lastName && <p className="text-sm text-red-500">{errors.lastName}</p>}
           </div>
@@ -88,9 +105,12 @@ const BasicSection = ({ data, onUpdate, onNavigateNext }) => {
                   const value = e.target.value;
                   if (/^\d{0,10}$/.test(value)) {
                     onUpdate({ phone: value });
+                  } else {
+                    toast.error('Phone cannot exceed 10 digits');
                   }
                 }}
                 className="flex h-12 w-full bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none"
+                maxLength={10}
               />
             </div>
             {errors.phone && <p className="text-sm text-red-500">{errors.phone}</p>}
@@ -104,8 +124,17 @@ const BasicSection = ({ data, onUpdate, onNavigateNext }) => {
               id="email"
               type="email"
               value={data.email}
-              onChange={(e) => onUpdate({ email: e.target.value })}
+              onChange={(e) => {
+                const v = e.target.value;
+                const max = 100;
+                if (v.length > max) {
+                  toast.error(`Email cannot exceed ${max} characters`);
+                  return;
+                }
+                onUpdate({ email: v });
+              }}
               className={`flex h-12 w-full rounded-md border ${errors.email ? 'border-red-500' : 'border-gray-200'} bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50`}
+              maxLength={100}
             />
             {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
           </div>
@@ -160,10 +189,15 @@ const BasicSection = ({ data, onUpdate, onNavigateNext }) => {
                 onChange={(e) => {
                   const value = e.target.value;
                   if (/^\d*$/.test(value)) {
+                    if (value.length > 3) {
+                      toast.error('Height input too long');
+                      return;
+                    }
                     onUpdate({ height: value });
                   }
                 }}
                 className={`flex h-12 w-full rounded-md border ${errors.height ? 'border-red-500' : 'border-gray-200'} bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent`}
+                maxLength={3}
               />
               <div className="relative h-12 w-20 rounded-md bg-green-50 border border-green-100 text-green-700">
                 <select
@@ -191,10 +225,15 @@ const BasicSection = ({ data, onUpdate, onNavigateNext }) => {
                 onChange={(e) => {
                   const value = e.target.value;
                   if (/^\d*$/.test(value)) {
+                    if (value.length > 3) {
+                      toast.error('Weight input too long');
+                      return;
+                    }
                     onUpdate({ weight: value });
                   }
                 }}
                 className={`flex h-12 w-full rounded-md border ${errors.weight ? 'border-red-500' : 'border-gray-200'} bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent`}
+                maxLength={3}
               />
               <div className="relative h-12 w-20 rounded-md bg-green-50 border border-green-100 text-green-700">
                 <select
