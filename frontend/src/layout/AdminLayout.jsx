@@ -4,9 +4,9 @@ import Sidebar from "./Sidebar";
 
 const AdminLayout = () => {
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen">
       <Sidebar />
-      <div className="flex-1 lg:ml-0">
+      <div className="flex-1">
         <Outlet />
       </div>
     </div>

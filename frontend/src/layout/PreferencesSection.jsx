@@ -2,9 +2,9 @@
 
 const PreferencesSection = ({ data, onUpdate, onNavigateNext, onNavigatePrevious }) => {
   return (
-    <div className="p-8 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="p-4 md:p-8 space-y-6 md:space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div>
-        <h2 className="text-xl font-bold tracking-tight text-gray-900">Preference</h2>
+        <h2 className="text-lg md:text-xl font-bold tracking-tight text-gray-900">Preference</h2>
       </div>
 
       <div className="space-y-6">
@@ -166,16 +166,16 @@ const PreferencesSection = ({ data, onUpdate, onNavigateNext, onNavigatePrevious
           </div>
         </div>
 
-        <div className="flex justify-center gap-5 pt-8">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-5 pt-6 md:pt-8 px-4 sm:px-0">
           <button
             onClick={onNavigatePrevious}
-            className="inline-flex h-12 min-w-[200px] items-center justify-center rounded-md bg-[#28a745] px-8 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-[#218838] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+            className="inline-flex h-12 min-w-[150px] sm:min-w-[200px] items-center justify-center rounded-md bg-[#28a745] px-6 sm:px-8 py-2 text-xs sm:text-sm font-semibold text-white shadow transition-colors hover:bg-[#218838] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 w-full sm:w-auto"
           >
             Previous
           </button>
           <button
             onClick={onNavigateNext}
-            className="inline-flex h-12 min-w-[200px] items-center justify-center rounded-md bg-[#28a745] px-8 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-[#218838] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+            className="inline-flex h-12 min-w-[150px] sm:min-w-[200px] items-center justify-center rounded-md bg-[#28a745] px-6 sm:px-8 py-2 text-xs sm:text-sm font-semibold text-white shadow transition-colors hover:bg-[#218838] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 w-full sm:w-auto"
           >
             Next
           </button>

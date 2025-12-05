@@ -21,9 +21,9 @@ const StatusSection = ({ data, onUpdate, onSubmit, onNavigatePrevious }) => {
   };
 
   return (
-    <div className="p-8 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="p-4 md:p-8 space-y-6 md:space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div>
-        <h2 className="text-xl font-bold tracking-tight text-gray-900">Status</h2>
+        <h2 className="text-lg md:text-xl font-bold tracking-tight text-gray-900">Status</h2>
       </div>
 
       <div className="space-y-6">
@@ -55,7 +55,7 @@ const StatusSection = ({ data, onUpdate, onSubmit, onNavigatePrevious }) => {
                   onChange={(e) => onUpdate({ assignedTo: e.target.value })}
                   className="flex h-10 w-full appearance-none rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  <option value="Ram Mohan">Ram Mohan</option>
+                  <option value="Manish Agrawal">Manish Agrawal</option>
                   <option value="other">Other</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
@@ -182,7 +182,7 @@ const StatusSection = ({ data, onUpdate, onSubmit, onNavigatePrevious }) => {
 
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <label className="text-sm font-medium text-gray-500">Custom notes</label>
+            <label className="text-xs md:text-sm font-medium text-gray-500">Custom notes</label>
             <button
               onClick={handleAddNote}
               className="rounded-full bg-[#28a745] p-1 text-white hover:bg-[#218838] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
@@ -193,15 +193,15 @@ const StatusSection = ({ data, onUpdate, onSubmit, onNavigatePrevious }) => {
 
           <div className="space-y-4">
             {data.customNotes.map((note) => (
-              <div key={note.id} className="flex gap-4">
-                <div className="w-32 flex-shrink-0">
+              <div key={note.id} className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <div className="w-full sm:w-32 shrink-0">
                   <div className="relative">
                     <input
                       type="date"
                       value={note.date}
                       readOnly={note.isGrayedOut}
                       onChange={(e) => handleNoteChange(note.id, 'date', e.target.value)}
-                      className={`flex h-12 w-full rounded-md border border-gray-200 px-3 py-2 text-xs text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent ${note.isGrayedOut ? 'bg-gray-200 text-gray-500' : 'bg-white'}`}
+                      className={`flex h-10 md:h-12 w-full rounded-md border border-gray-200 px-3 py-2 text-xs text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent ${note.isGrayedOut ? 'bg-gray-200 text-gray-500' : 'bg-white'}`}
                     />
                   </div>
                 </div>
@@ -211,7 +211,7 @@ const StatusSection = ({ data, onUpdate, onSubmit, onNavigatePrevious }) => {
                     value={note.text}
                     readOnly={note.isGrayedOut}
                     onChange={(e) => handleNoteChange(note.id, 'text', e.target.value)}
-                    className={`flex h-12 w-full rounded-md border border-gray-200 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent ${note.isGrayedOut ? 'bg-gray-200 text-gray-500' : 'bg-white text-gray-900'}`}
+                    className={`flex h-10 md:h-12 w-full rounded-md border border-gray-200 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent ${note.isGrayedOut ? 'bg-gray-200 text-gray-500' : 'bg-white text-gray-900'}`}
                   />
                 </div>
               </div>
@@ -219,16 +219,16 @@ const StatusSection = ({ data, onUpdate, onSubmit, onNavigatePrevious }) => {
           </div>
         </div>
 
-        <div className="flex justify-center gap-5 pt-8">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-5 pt-6 md:pt-8 px-4 sm:px-0">
           <button
             onClick={onNavigatePrevious}
-            className="inline-flex h-12 min-w-[200px] items-center justify-center rounded-md bg-[#28a745] px-8 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-[#218838] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+            className="inline-flex h-12 min-w-[150px] sm:min-w-[200px] items-center justify-center rounded-md bg-[#28a745] px-6 sm:px-8 py-2 text-xs sm:text-sm font-semibold text-white shadow transition-colors hover:bg-[#218838] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 w-full sm:w-auto"
           >
             Previous
           </button>
           <button
             onClick={onSubmit}
-            className="inline-flex h-12 min-w-[200px] items-center justify-center rounded-md bg-[#28a745] px-8 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-[#218838] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+            className="inline-flex h-12 min-w-[150px] sm:min-w-[200px] items-center justify-center rounded-md bg-[#28a745] px-6 sm:px-8 py-2 text-xs sm:text-sm font-semibold text-white shadow transition-colors hover:bg-[#218838] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 w-full sm:w-auto"
           >
             Update
           </button>

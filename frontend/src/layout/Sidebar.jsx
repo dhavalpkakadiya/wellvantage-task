@@ -27,7 +27,7 @@ const Sidebar = () => {
   return (
     <>
       <button
-        className="lg:hidden relative top-4 h-10 left-4 z-50 bg-[#28A745] text-white p-2 rounded-md"
+        className="xl:hidden fixed top-4 left-4 z-50 bg-[#28A745] text-white p-2 rounded-md h-10 w-10 flex items-center justify-center hover:bg-[#218838] transition-colors"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -35,17 +35,17 @@ const Sidebar = () => {
 
       {isOpen && (
         <div
-          className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-30"
+          className="xl:hidden fixed inset-0 backdrop-blur-[2px] z-30"
           onClick={() => setIsOpen(false)}
         />
       )}
 
       <div
         className={`
-          fixed top-0 left-0 h-screen bg-[#D6E2D9] border-r border-gray-300 p-6 
+          fixed top-0 left-0 h-screen bg-[#D6E2D9] border-r border-gray-300 p-6
           flex flex-col justify-between z-40 transition-transform duration-300
-          ${isOpen ? "translate-x-0" : "-translate-x-full"} 
-          lg:translate-x-0 lg:w-64 w-64
+          ${isOpen ? "translate-x-0" : "-translate-x-full"}
+          xl:translate-x-0 xl:w-64 w-64
         `}
       >
         <div>
@@ -98,7 +98,7 @@ const Sidebar = () => {
 
           <button
             onClick={handleLogout}
-            className="flex items-center gap-2 text-gray-700 hover:text-black w-full transition-colors"
+            className="flex items-center ml-6 gap-5.5 text-gray-700 hover:text-black w-full transition-colors"
           >
             <img src={logoutIcon} alt="logout" className="w-5 h-5" />
             <span className="font-medium">Logout</span>
@@ -106,7 +106,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className="hidden lg:block w-64" />
+      <div className="hidden xl:block w-64" />
     </>
   );
 };
