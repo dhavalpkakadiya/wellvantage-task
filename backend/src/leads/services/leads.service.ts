@@ -54,7 +54,7 @@ export class LeadsService {
     if (search) {
       const searchCondition = 'lead.firstName ILIKE :search';
 
-      query.where(searchCondition, { search: `${search}%` });
+      query.andWhere(searchCondition, { search: `${search}%` });
     }
 
     query.skip((page - 1) * limit).take(limit);
