@@ -20,7 +20,7 @@ const FrontPage = () => {
   }, [images.length]);
 
   return (
-    <div className="md:w-full md:flex h-screen">
+    <div className="md:w-full md:flex max-h-screen">
       <div
         className="md:w-1/2 h-screen w-full bg-cover bg-center transition-all duration-1000 ease-in-out"
         style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
@@ -34,7 +34,7 @@ const FrontPage = () => {
             Smarter Gym Management.
           </div>
 
-          <div className="px-6 pt-20 sm:mt-32 md:hidden flex flex-col gap-5 items-center justify-center">
+          <div className="px-6 pt-20 sm:mt-32 md:hidden flex flex-col gap-5 items-center  h-screen overflow-hidden">
             <div className="font-semibold text-[37px] sm:font-bold sm:text-[40px] text-[#28A745]">
               Welcome to
             </div>
