@@ -43,11 +43,11 @@ const Details = () => {
           errors[field] = "This field is required.";
         }
       });
-
+      
       if (values.phoneNumber && !/^\d{10}$/.test(values.phoneNumber)) {
         errors.phoneNumber = "Phone number must be exactly 10 digits.";
       }
-      return errors;
+      return errors;  
     },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {

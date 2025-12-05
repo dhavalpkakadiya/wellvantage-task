@@ -42,7 +42,7 @@ const FrontPage = () => {
 
             <Button
               variant="contained"
-              className="!bg-[#28A745] !text-white sm:!font-semibold sm:!text-[20px] !rounded-[15px] sm:!py-[10px] sm:!px-[30px]"
+              className="bg-[#28A745]! text-white! sm:font-semibold! sm:text-[20px]! rounded-[15px]! sm:py-2.5! sm:px-[30px]!"
               onClick={() => navigate("/login")}
             >
               Gym Owner - Sign Up
@@ -60,7 +60,7 @@ const FrontPage = () => {
 
         <Button
           variant="contained"
-          className="!bg-[#28A745] !text-white !font-semibold !text-[20px] !rounded-[15px] !py-[10px] !px-[30px]"
+          className="bg-[#28A745]! text-white! font-semibold! text-[20px]! rounded-[15px]! py-2.5! px-[30px]!"
           onClick={() => navigate("/login")}
         >
           Gym Owner - Sign Up
